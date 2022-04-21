@@ -1,0 +1,117 @@
+/* Importing font from local folder */
+@import url('../font/Poppins-Regular.ttf');
+@import url('../font/GoogleSans-Regular.ttf');
+@import url('../font/Heaters.otf');
+
+
+/* Declaration of variables */
+:root {
+  /*Colors to be used*/
+    --primary-color: #f9d700 /*rgb(249,215,0)*/;
+    --secondary-color: #000000 /*rgb(0,0,0)*/;
+    --contrast-color: #ffffff /*rgb(255, 255, 255)*/;
+    --other-color: #ffa500 /*rgb(255,165,0)*/;
+
+    /*Fonts to be used*/
+    --heading-font: 'Poppins', sans-serif;
+    --text-font: 'GoogleSans', sans-serif;
+  }
+
+/* Table Of Content
+** 0. General
+** 1. Header
+** 2. Hero
+** 3.
+** 4.
+** 5.
+*/
+
+/* General Section */
+body{
+  height: 200vh;
+}
+
+body::-webkit-scrollbar {
+  width: 16px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: var(--secondary-color);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border-top-left-radius: 100px;
+  border-bottom-left-radius: 100px;
+}
+
+/* Header Section */
+
+/* Topbar */
+.topbar{
+  width: 100%;
+  height: 3vh;
+  display: flex;
+}
+
+.topbar .stripyellow{
+  width: 3vh;
+  height: inherit;
+  background-color: var(--primary-color);
+  border: none;
+  outline: none;
+}
+
+.topbar .stripdark{
+  width: 3vh;
+  height: inherit;
+  background-color: var(--secondary-color);
+  border: none;
+  outline: none;
+}
+
+/* Navbar */
+.navbar{
+  background: #313131;
+}
+
+.navbar .navbar-brand{
+  font-family: 'Heaters', sans-serif;
+  font-size: 35px;
+}
+
+.navbar .navbar-brand .drive{
+  border-bottom: 2px solid var(--other-color);
+  color: #fff !important;
+}
+
+.navbar .navbar-brand .kmer{
+  background:-moz-linear-gradient(top, var(--primary-color) 0%, var(--other-color) 100%);
+  background: -webkit-linear-gradient(top, var(--primary-color) 0%, var(--other-color) 100%); 
+  background: linear-gradient(to bottom, var(--primary-color) 0%, var(--other-color) 100%);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color:transparent;
+  font-weight: bold;
+}
+
+.navbar .navbar-brand i{
+  background:-moz-linear-gradient(top, var(--primary-color) 0%, var(--other-color) 100%);
+  background: -webkit-linear-gradient(top, var(--primary-color) 0%, var(--other-color) 100%); 
+  background: linear-gradient(to bottom, var(--primary-color) 0%, var(--other-color) 100%);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color:transparent;
+}
+
+/* Hero Section */
+.hero{
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(rgb(0, 0, 0, 0.7), rgb(0, 0, 0, 0.7)), url('../img/car1.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
