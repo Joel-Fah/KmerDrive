@@ -6,5 +6,91 @@
 
 {% comment %} Body of the page {% endcomment %}
 {% block body %}
-<div class="hero"></div>
+<div class="hero">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="hero-text">
+                    <h4 class="text-uppercase">The new solution is with</h4>
+                    <h1><span class="kmer">KMER</span><span class="drive">DRIVE</span></h1>
+                    <p>
+                        It is no more a question of distance, localisation nor time. We make sure to get you to your destination through the
+                        correct route. Just give us a try and be dazzled.
+                    </p>
+                    <a href="" class="btn get-started">Get Started</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="hero-form">
+                    <div class="hero-form-intro">
+                        <span class="text-uppercase d-none" id="value"></span> <small class="d-none" id="xaf">XAF</small><br>
+                        <img src="{% static 'img/logo-transport-white.png' %}" alt=""> <br>
+                        <small class="text-muted">
+                            Need a trip cost estimation ?
+                        </small>
+                    </div>
+                    <form class="row g-3 needs-validation" novalidate>
+                      
+                      <div class="col-md-12">
+                        <!-- <label for="input1" class="form-label">Départ</label> -->
+                        <div class="input-group has-validation">
+                          <span class="input-group-text" id="inputGroupPrepend"><i class="fa fa-map-marker-alt" aria-hidden="true"></i></span>
+                          <input type="text" class="form-control" id="input3" aria-describedby="inputGroupPrepend" placeholder="Start (Ex. Ekounou marché)" required>
+                          <div class="invalid-feedback">
+                            Please enter a starting point.
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-12">
+                        <!-- <label for="input2" class="form-label">Arrivé</label> -->
+                        <div class="input-group has-validation">
+                          <span class="input-group-text" id="inputGroupPrepend"><i class="fa fa-map-signs" aria-hidden="true"></i></span>
+                          <input type="text" class="form-control" id="input3" aria-describedby="inputGroupPrepend" placeholder="Destination (Ex. Château Ngoa-ekele)" required>
+                          <div class="invalid-feedback">
+                            Please enter a destination point.
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div class="col-12">
+                        <button class="btn" type="submit">Estimate my trip cost.</button>
+                      </div>
+                    </form>
+                    <script>
+                    // Example starter JavaScript for disabling form submissions if there are invalid fields
+                    (function () {
+                      'use strict'
+                    
+                      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                      var forms = document.querySelectorAll('.needs-validation')
+                    
+                      // Loop over them and prevent submission
+                      Array.prototype.slice.call(forms)
+                        .forEach(function (form) {
+                          form.addEventListener('submit', function (event) {
+                            if (!form.checkValidity()) {
+                              event.preventDefault()
+                              event.stopPropagation()
+                            } else {
+                                var valueReturn = document.getElementById('value');
+                                var xaf = document.getElementById('xaf');
+                                xaf.classList.remove('d-none');
+                                valueReturn.classList.remove('d-none');
+                                valueReturn.innerHTML = '~ 1234';
+                                
+                                event.preventDefault()
+                                event.stopPropagation()
+                            }
+                    
+                            form.classList.add('was-validated')
+                          }, false)
+                        })
+                    })()
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock body %}
