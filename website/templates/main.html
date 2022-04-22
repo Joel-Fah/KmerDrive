@@ -166,7 +166,86 @@
     {% endblock body %}
 
     <!-- ========== Start Footer ========== -->
-    
+    <footer class="footer">
+      <div class="row">
+        <div class="col-md-4 col-sm-1 col-lg-4">
+          <div class="brand">
+            <a class="footer-brand" href="#">
+              <img src="{% static 'img/logo3.png' %}" alt=""> <br>
+              <span class="kmer">KMER</span><span class="drive">DRIVE</span> <i class="fa fa-taxi" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-sm-1 col-lg-4">
+          <div class="social-links">
+            <h4>Let's Socialize</h4>
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="" class="link"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="" class="link"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="" class="link"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="" class="link"><i class="fab fa-github" aria-hidden="true"></i></a>
+              </li>
+            </ul>
+          </div>
+          <small class="text-muted">
+            Get the right information from the right people!
+          </small>
+        </div>
+
+        <div class="col-md-4">
+          <div class="newsletter">
+            <h4>Newsletter</h4>
+            <form action="" method="post">
+              <div class="inputs d-flex">
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="input1">@</span>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Your Email"
+                    aria-label="Your Email"
+                    aria-describedby="input1"
+                  />
+                </div>
+                <button type="submit" class="btn"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+              </div>
+            </form>
+            <small class="text-muted">
+              And never miss out any new update regarding our concern.
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+          <div class="copyright">
+            <hr>
+            <small class="text-center">
+              <i class="fa fa-copyright" aria-hidden="true"></i> Copyrights 
+              <script>
+                document.write(new Date().getFullYear());
+              </script>
+               | This website was made with <i class="fa fa-heart" aria-hidden="true"></i> and <i class="fab fa-github" aria-hidden="true"></i>
+               
+            </small>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button type="button" class="btn btn-floatin" id="btn-back-to-top">
+      <i class="fa fa-chevron-circle-up"></i>
+    </button>
     <!-- ========== End Footer ========== -->
 
     <!-- Popper & Bootstrap JS files -->
