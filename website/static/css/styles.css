@@ -22,7 +22,7 @@
 ** 0. General
 ** 1. Header
 ** 2. Hero
-** 3.
+** 3. Flip Cards
 ** 4.
 ** 5.
 */
@@ -31,6 +31,8 @@
 body{
   height: 200vh;
   overflow-x: hidden;
+  background-color: #272727;
+  color: white;
 }
 
 body::-webkit-scrollbar {
@@ -45,6 +47,35 @@ body::-webkit-scrollbar-thumb {
   background-color: var(--primary-color);
   border-top-left-radius: 100px;
   border-bottom-left-radius: 100px;
+}
+
+.section-title{
+  text-align: center;
+  width: 100%;
+  margin-top: 50px;
+}
+
+.section-title h1{
+  font-size: 90pt;
+  font-weight: bold;
+  font-family: 'Poppins' sans-serif;
+  opacity: .2;
+  background:-moz-linear-gradient(top, var(--other-color) 0%, var(--secondary-color) 100%);
+  background: -webkit-linear-gradient(top, var(--other-color) 0%, var(--secondary-color) 100%); 
+  background: linear-gradient(to bottom, var(--other-color) 0%, var(--secondary-color) 100%);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color:transparent;
+}
+
+.section-title h2{
+  font-size: 45pt;
+  font-weight: bold;
+  font-family: 'GoogleSans' sans-serif;
+  position: relative;
+  top: -70px;
+  color: var(--primary-color);
 }
 
 /* Header Section */
@@ -285,4 +316,148 @@ body::-webkit-scrollbar-thumb {
   .hero{
     padding: 30% 5% 0 5%;
   }
+}
+
+/* Flip Cards Section */
+.flip-box{
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  margin-top: 25px;
+}
+
+.flip-box-front,
+.flip-box-back{
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  min-height: 475px;
+  transition: transform .8s cubic-bezier(.4, .2, .2, 1);
+  backface-visibility: hidden;
+}
+
+.flip-box-front{
+  transform: rotateY(0deg);
+  transform-style: preserve-3d;
+}
+
+.flip-box:hover .flip-box-front{
+  transform: rotateY(-180deg);
+  transform-style: preserve-3d;
+}
+
+.flip-box-back{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 5px 22px 0 rgb(249, 215, 0, .4);
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  border-radius: 10px;
+  background:-moz-linear-gradient(top, var(--primary-color) 0%, var(--other-color) 100%);
+  background: -webkit-linear-gradient(top, var(--primary-color) 0%, var(--other-color) 100%); 
+  background: linear-gradient(to bottom, var(--primary-color) 0%, var(--other-color) 100%);
+  transform: rotateY(180deg);
+  transform-style: preserve-3d;
+}
+
+.flip-box:hover .flip-box-back{
+  transform: rotateY(0deg);
+  transform-style: preserve-3d;
+}
+
+.flip-box .inner-fr{
+  position: absolute;
+  left: o;
+  width: 100%;
+  padding: 20px;
+  outline: 1px solid transparent;
+  perspective: inherit;
+  z-index: 2;
+  transform: translateY(-50%) translateZ(60px) scale(.94);
+  top: 80%;
+}
+
+.flip-box .inner-ba{
+  position: absolute;
+  left: o;
+  width: 100%;
+  padding: 20px;
+  outline: 1px solid transparent;
+  perspective: inherit;
+  z-index: 2;
+  transform: translateY(-50%) translateZ(60px) scale(.94);
+  top: 50%;
+}
+
+.flip-box-header.inner-front{
+  font-weight: bold;
+  font-size: 30px;
+  background:-moz-linear-gradient(top, var(--primary-color) 0%, var(--other-color) 100%);
+  background: -webkit-linear-gradient(top, var(--primary-color) 0%, var(--other-color) 100%); 
+  background: linear-gradient(to bottom, var(--primary-color) 0%, var(--other-color) 100%);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color:transparent;
+}
+
+.flip-box-header.inner-back{
+  font-weight: bold;
+  font-size: 30px;
+  color: var(--secondary-color);
+}
+
+.flip-box-header.inner-back span{
+  border-bottom: 3px solid var(--secondary-color);
+}
+
+.flip-box p{
+  font-size: 12pt;
+}
+
+.flip-box .inner-ba p{
+  color: #272727;
+  text-align: justify;
+}
+
+.flip-box .inner-fr i{
+  text-align: right;
+  display: block;
+  font-size: xx-large;
+  background:-moz-linear-gradient(top, var(--primary-color) 0%, var(--other-color) 100%);
+  background: -webkit-linear-gradient(top, var(--primary-color) 0%, var(--other-color) 100%); 
+  background: linear-gradient(to bottom, var(--primary-color) 0%, var(--other-color) 100%);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color:transparent;
+}
+
+.flip-box-img{
+  margin-top: 25px;
+}
+
+.flip-box-button{
+    background-color: transparent;
+    border: 2px solid #272727;
+    border-radius: 2px;
+    color: #272727;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 25px;
+    padding: 10px 15px;
+    text-transform: uppercase;
+    transition: all .3s ease-in;
+}
+
+.flip-box-button:hover{
+  border-color: var(--contrast-color);
+  color: var(--contrast-color);
+}
+
+.flip-box-button > i{
+  text-decoration: none;
+  color: #272727;
 }
