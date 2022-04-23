@@ -1,0 +1,13 @@
+{% extends 'mainapp.html' %}
+{% load static %}
+
+{% comment %} Title of the page {% endcomment %}
+{% block title %}App{% endblock title %}
+
+{% comment %} Body of the page {% endcomment %}
+{% block body %}
+<div class="height-100">
+<h4>Main Components</h4>
+{% lorem 20 %}
+</div>
+{% endblock body %}

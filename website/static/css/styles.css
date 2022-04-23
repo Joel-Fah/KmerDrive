@@ -34,7 +34,6 @@ html{
 }
 
 body{
-  height: 200vh;
   overflow-x: hidden;
   background-color: #272727;
   color: white;
@@ -569,6 +568,7 @@ body::-webkit-scrollbar-thumb {
   height: 240px;
   background: white;
   object-fit: cover;
+  border-radius: 50px;
 }
 
 .rect{
