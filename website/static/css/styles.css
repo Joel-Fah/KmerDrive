@@ -23,8 +23,9 @@
 ** 1. Header
 ** 2. Hero
 ** 3. Flip Cards
-** 4. Testimonials
-** 5. Footer
+** 4. Project Description
+** 5. Testimonials
+** 6. Footer
 */
 
 /* General Section */
@@ -494,6 +495,114 @@ body::-webkit-scrollbar-thumb {
   text-decoration: none;
   color: #272727;
 }
+
+/* Project Description Section */
+.description-text{
+  width: 100%;
+}
+
+.description-text .project-icons{
+  text-align: center;
+}
+
+.description-text .project-icons .icon{
+  margin: 0 15px;
+  text-align: center;
+  width: 100px;
+  height: 100px;
+  padding: 30px;
+  border-radius: 50px;
+  background:-moz-linear-gradient(top, var(--primary-color) 0%, var(--other-color) 100%);
+  background: -webkit-linear-gradient(top, var(--primary-color) 0%, var(--other-color) 100%); 
+  background: linear-gradient(to bottom, var(--primary-color) 0%, var(--other-color) 100%);
+  transition: all 2s ease-in;
+}
+
+.description-text .subject h4{
+  color: var(--primary-color);
+}
+
+.description-text .subject p.subject-description{
+  text-align: justify;
+}
+
+.description-text .subject p.subject-description .read-more{
+  text-decoration: none;
+  background:-moz-linear-gradient(top, var(--primary-color) 0%, var(--other-color) 100%);
+  background: -webkit-linear-gradient(top, var(--primary-color) 0%, var(--other-color) 100%); 
+  background: linear-gradient(to bottom, var(--primary-color) 0%, var(--other-color) 100%);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color:transparent;
+  font-weight: bold;
+}
+
+.description-text .subject p.subject-description .read-more:hover{
+  text-decoration: underline wavy;
+}
+
+.description-text .project-icons i{
+  font-size: 30pt;
+}
+#cube-container {
+  width: 300px;
+  height: 300px;
+  margin: 80px auto;
+  perspective: 800px;
+  background: transparent;
+}
+
+.cube {	
+  height: 100%;
+  width: 100%;
+  position: relative;
+  transform-style: preserve-3d;			
+  transition: all 0.8s ease-in-out;		
+  animation: rotate 16s infinite;
+}
+
+.cube img {
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  background: white;
+  object-fit: cover;
+}
+
+.rect{
+  position: relative;
+  top: -50px;
+  margin: auto;
+  width: 75%;
+  height: 100px;
+  background: linear-gradient(var(--secondary-color), var(--contrast-color));
+  filter: blur(10px);
+  opacity: .3;
+  transform: rotateX(90deg);
+}
+
+.cube img:nth-child(1) {
+	transform: rotateY(0deg) translateZ(120px);
+}
+.cube img:nth-child(2) {
+	transform: rotateY(90deg) translateZ(120px);
+}
+.cube img:nth-child(3) {
+	transform: rotateY(-90deg) translateZ(120px);
+}
+.cube img:nth-child(4) {
+	transform: rotateY(180deg) translateZ(120px);
+}
+
+@keyframes rotate {
+	0% {transform: rotateY(0deg); }		
+	25% { transform: rotateY(90deg); }		
+	50% { transform: rotateY(180deg);}	
+	75% {  transform: rotateY(270deg); }	
+	100% { transform: rotateY(360deg); }
+}
+
 
 /* Testimonials Section */
 .messages {
