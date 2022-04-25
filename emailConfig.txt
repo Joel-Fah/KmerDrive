@@ -1,0 +1,12 @@
+In views.py
+
+# Uncomment this later to send email to required address
+            # try:
+            #     send_mail(
+            #         subjectEmail, #subject
+            #         msg, #message
+            #         email, #from email
+            #         ['joelfah2003@gmail.com', email], #to email
+            #         )
+            # except BadHeaderError:
+            #     return HttpResponse('Invalid header found')
