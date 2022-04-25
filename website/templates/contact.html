@@ -1,0 +1,100 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% comment %} Title of the page {% endcomment %}
+{% block title %}Contact{% endblock title %}
+
+{% comment %} Body of the page {% endcomment %}
+{% block body %}
+<div class="container" style="background: linear-gradient(rgb(39, 39, 39, .8), rgb(39, 39, 39, .8)), url('../static/img/mapoutline.png') no-repeat left; background-size: cover;">
+    <div class="contact-hero">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-6">
+                <div class="contact-description">
+                    <img src="{% static 'img/feedback.png' %}" alt="feedback" class="img-fluid">
+                    <h1 class="text-capitalize">Get in touch</h1>
+                    <p>
+                        Get in touch with us to get some help, tips or to join the movement. 😉😊
+                        <small class="text-muted">
+                            if you have any question, feel free to drop us a line.
+                            If you don't get an answer immediately, We might just 
+                            be travelling in the middle of nowhere. We'll get back 
+                            to you as soon as we can. That's a promise. 
+                        </small>
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-6">
+                <div class="direct-contact">
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <a href="">
+                                <div class="contact-info">
+                                    <i class="fa fa-phone" aria-hidden="true"></i>
+                                    <h6>+(237) 656 997 810</h6>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="">
+                                <div class="contact-info">
+                                    <i class="fa fa-at" aria-hidden="true"></i>
+                                    <h6>joelfah2003@gmail.com</h6>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="">
+                                <div class="contact-info">
+                                    <i class="fa fa-map-signs" aria-hidden="true"></i>
+                                    <h6>University of Yaounde I</h6>
+                                </div>
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <div class="contact-form">
+                    <form action="" method="post">
+                        <h4>Contact Form</h4>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <div class="mb-3">
+                                  <label for="name" class="form-label">Your Name</label>
+                                  <span class="fa fa-user form-control-icon"></span>
+                                  <input type="text" name="name" id="name" class="form-control" placeholder="First & Last Names" aria-describedby="helpId">
+                                  <!-- <small id="helpId" class="text-muted">Help text</small> -->
+                                </div>
+                                <div class="mb-3">
+                                  <label for="email" class="form-label">Email</label>
+                                  <span class="fa fa-at form-control-icon"></span>
+                                  <input type="email" name="email" id="email" class="form-control" placeholder="abc@xyz.com" aria-describedby="helpId">
+                                  <!-- <small id="helpId" class="text-muted">Help text</small> -->
+                                </div>
+                                <div class="mb-3">
+                                  <label for="phone" class="form-label">Telephone</label>
+                                  <span class="fa fa-phone form-control-icon"></span>
+                                  <input type="tel" name="phone" id="phone" class="form-control" placeholder="phone number" aria-describedby="helpId">
+                                  <!-- <small id="helpId" class="text-muted">Help text</small> -->
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <div class="mb-3">
+                                  <label for="message" class="form-label">Message</label>
+                                  <textarea class="form-control" name="message" id="message" rows="8" placeholder="Tell us about ..."></textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <button type="submit" class="btn btn-success float-end">Send <i class="fa fa-chevron-circle-right" aria-hidden="true"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}
