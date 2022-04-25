@@ -6,8 +6,88 @@
 
 {% comment %} Body of the page {% endcomment %}
 {% block body %}
-<div class="height-100">
-<h4>Main Components</h4>
-{% lorem 20 %}
+<div class="main">
+    
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <h4>Navigation Map</h4>
+            <div class="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.9054858590353!2d11.549292614841518!3d3.8304506496544266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x108bc5347ce2ba5d%3A0x76de28d6bce0db35!2sAwae%20Escalier!5e0!3m2!1sen!2scm!4v1650812642618!5m2!1sen!2scm" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-6">
+            <h4>My Actions</h4>
+            <div class="auto">
+                <div class="action" style="background: linear-gradient(to bottom,rgb(0, 0, 0, .8), rgb(0, 0, 0, .6)), url('../static/img/actions/setroute2.png') no-repeat center; background-size: cover;">
+                    <div class="head d-flex align-items-center justify-content-between">
+                        <h3>Set Navigation</h3>
+                        <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                    </div>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                        aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                        aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                        aliqua.
+                    </p>
+                    <a href="" class="btn">Start <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            
+            <div class="auto">
+                <div class="action" style="background: linear-gradient(to bottom,rgb(0, 0, 0, .8), rgb(0, 0, 0, .6)), url('../static/img/actions/touristmap.png') no-repeat center; background-size: cover;">
+                    <div class="head d-flex align-items-center justify-content-between">
+                        <h3>Amazing Places</h3>
+                        <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                    </div>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                        aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                        aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                        aliqua.
+                    </p>
+                    <a href="" class="btn">Start <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            
+            <div class="auto">
+                <div class="action" style="background: linear-gradient(to bottom,rgb(0, 0, 0, .8), rgb(0, 0, 0, .6)), url('../static/img/actions/taximap.png') no-repeat center; background-size: cover;">
+                    <div class="head d-flex align-items-center justify-content-between">
+                        <h3>Crowded Areas</h3>
+                        <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                    </div>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                        aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                        aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                        aliqua.
+                    </p>
+                    <a href="" class="btn">Start <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                </div>
+            </div>
+
+            <div class="auto">
+                <div class="action" style="background: linear-gradient(to bottom,rgb(0, 0, 0, .8), rgb(0, 0, 0, .6)), url('../static/img/actions/reservetaxi.png') no-repeat center; background-size: cover;">
+                    <div class="head d-flex align-items-center justify-content-between">
+                        <h3>Available Drivers</h3>
+                        <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                    </div>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                        aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                        aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                        aliqua.
+                    </p>
+                    <a href="" class="btn">Start <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-12 col-lg-6">
+            <h4>Some Other Actions</h4>
+        </div>
+    </div>
 </div>
 {% endblock body %}

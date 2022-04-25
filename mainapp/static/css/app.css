@@ -51,6 +51,7 @@ a {
     text-decoration: none
 }
 
+/* Header and Navbar Sections */
 .header {
     width: 100%;
     height: var(--header-height);
@@ -199,11 +200,7 @@ a {
     background-color: var(--dark-color)
 }
 
-.height-100 {
-    height: 100vh;
-    margin: auto;
-}
-
+/* Responsive for Tablets and higher */
 @media screen and (min-width: 768px) {
     body {
         margin: calc(var(--header-height) + 1rem) 0 0 0;
@@ -235,5 +232,99 @@ a {
 
     .body-pd {
         padding-left: calc(var(--nav-width) + 188px)
+    }
+}
+
+/* Actions Section */
+.main {
+    /* height: 100vh; */
+    margin: auto;
+    overflow: hidden;
+}
+
+.main h4{
+    font-size: 30pt;
+    font-weight: bold;
+}
+
+.map > iframe{
+    width: 100%;
+    height: 50vh;
+    margin-bottom: 20px;
+}
+
+.auto {
+    display: block;
+    margin: 20px;
+    width: 100%;
+    height: 50px;
+    overflow: hidden;
+    transition: all .5s ease;
+}
+
+.auto:hover i{
+    transform: rotateX(180deg);
+}
+
+.auto .action{
+    padding: 8px;
+    border-radius: 20px;
+}
+
+.auto .action .head i{
+    font-size: 20pt;
+    color: var(--first-color);
+}
+
+.auto .action h3{
+    color: var(--first-color);
+    font-weight: 600;
+}
+
+.auto .action p{
+    color: #fff;
+    text-align: justify;
+}
+
+.auto a{
+    padding: 5px 10px 5px 1 0px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 13pt;
+    font-weight: 600;
+    font-family: var(--body-font);
+    color: var(--first-color);
+    border: 2px solid var(--first-color);
+    box-shadow: inset 0 0 0 0 var(--first-color);
+    -webkit-transition: all ease 0.8s;
+    -moz-transition: all ease 0.8s;
+    transition: all ease 0.8s;
+}
+
+.auto a:hover{
+    box-shadow: inset 150px 0 0 0 var(--dark-color);
+    color: var(--first-color);
+    border-color: var(--dark-color);
+}
+
+/* Responsive for Mobile devices: S, M & L */
+@media (max-width: 425px){
+    .main h4{
+        font-size: 20pt;
+    }
+
+    .auto {
+        margin: 15px 0;
+    }
+}
+
+/* Responsive for Mobile devices: S, M & L */
+@media (max-width: 768px){
+    .main h4{
+        font-size: 25pt;
+    }
+
+    .auto {
+        margin: 15px 0;
     }
 }

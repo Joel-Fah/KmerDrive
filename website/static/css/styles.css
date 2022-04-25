@@ -1,5 +1,4 @@
 /* Importing font from local folder */
-@import url('../font/Poppins-Regular.ttf');
 @import url('../font/GoogleSans-Regular.ttf');
 @import url('../font/Heaters.otf');
 
@@ -13,7 +12,6 @@
     --other-color: #ffa500 /*rgb(255,165,0)*/;
 
     /*Fonts to be used*/
-    --heading-font: 'Poppins', sans-serif;
     --text-font: 'GoogleSans', sans-serif;
     --style-font: 'Heaters', sans-serif;
   }
@@ -25,7 +23,8 @@
 ** 3. Flip Cards
 ** 4. Project Description
 ** 5. Testimonials
-** 6. Footer
+** 6. Contact
+** 7. Footer
 */
 
 /* General Section */
@@ -37,6 +36,7 @@ body{
   overflow-x: hidden;
   background-color: #272727;
   color: white;
+  font-family: var(--text-font);
 }
 
 body::-webkit-scrollbar {
@@ -243,8 +243,27 @@ body::-webkit-scrollbar-thumb {
   border-color: var(--secondary-color);
 }
 
+.hero .hero-text a.dropdown-toggle{
+  color: var(--other-color);
+  font-weight: bold;
+  font-family: var(--text-font);
+  font-size: 15pt;
+  text-align: center;
+}
+
+.hero .hero-text ul.dropdown-menu{
+  background-color: #272727;
+}
+
+.hero .hero-text ul.dropdown-menu .dropdown-item{
+  color: var(--other-color);
+}
+
+.hero .hero-text ul.dropdown-menu .dropdown-item:hover{
+  background-color: #313131;
+}
+
 .hero .hero-form{
-  /* background-color: rgb(0, 0, 0, .4); */
   padding: 10%;
   border-radius: 20px;
   position: relative;
@@ -320,11 +339,11 @@ body::-webkit-scrollbar-thumb {
   .hero .hero-form{
     margin-top: 30%;
     /* background-color: rgb(249, 215, 0, .6); */
-    background: rgb(249, 215, 0, .4);
+    /* background: rgb(249, 215, 0, .4);
     box-shadow: 0 5px 22px 0 rgb(249, 215, 0, .4);
     backdrop-filter: blur( 4px );
     -webkit-backdrop-filter: blur( 4px );
-    border-radius: 10px;
+    border-radius: 10px; */
   }
   .hero .hero-form .hero-form-intro span{
     color: var(--secondary-color);
@@ -333,7 +352,7 @@ body::-webkit-scrollbar-thumb {
     color: #313131;
   }
   .hero .hero-form .hero-form-intro small.text-muted{
-    color: var(--secondary-color) !important;
+    color: var(--contrast-color) !important;
   }
 }
 
@@ -604,8 +623,21 @@ body::-webkit-scrollbar-thumb {
 	100% { transform: rotateY(360deg); }
 }
 
+/* Responsive for Mobile devices: S, M & L */
+@media (max-width: 425px){
+  .description-text .project-icons .icon{
+    padding: 15% !important;
+    width: 45px !important;
+    height: 45px !important;
+  }
+
+  .description-text .project-icons i{
+    font-size: 15pt !important;
+  }
+}
+
 /* Responsive for Laptop */
-@media (max-width: 1024px) {
+@media (max-width: 1024px){
   .description-text .project-icons .icon{
     padding: 20%;
     width: 70px;
@@ -675,13 +707,28 @@ body::-webkit-scrollbar-thumb {
   
 }
 
+.messages .read-all{
+  width: 100%;
+  text-align: right;
+  text-decoration: none;
+  color: var(--primary-color);
+  text-decoration: underline wavy;
+  transition: color .3s ease-in;
+}
+
+.messages .read-all:hover{
+  color: var(--other-color);
+}
+
 /* Responsive for Mobile devices: S, M & L */
 @media (max-width: 425px){
   .mobile-restrict{
     display: none;
   }
+
   .thought{
     max-width: 100%;
+    width: 100%;
     margin: 0 10px;
     margin-bottom: 20px;
   }
@@ -689,25 +736,235 @@ body::-webkit-scrollbar-thumb {
 
 /* Responsive for Tablet*/
 @media (max-width: 768px){
-  .mobile-restrict{
-    display: none;
-  }
   .thought{
     max-width: 50%;
     margin: 0 30px;
     margin-bottom: 30px;
   }
+
+  /* .desktop-restrict{
+    display: none;
+  } */
 }
 
 /* Responsive for Laptop*/
 @media (max-width: 1024px){
-  .mobile-restrict{
-    display: none;
-  }
   .thought{
     max-width: 75%;
     margin: 0 50px;
     margin-bottom: 30px;
+  }
+
+  /* .desktop-restrict{
+    display: none;
+  } */
+}
+
+/* Contact Section */
+.contact-hero{
+  width: 100%;
+  margin: 20px 0;
+  padding: 20px;
+}
+
+.contact-hero .contact-description img{
+  width: 75%;
+}
+
+.contact-hero .contact-description h1{
+  background:-moz-linear-gradient(top, var(--primary-color) 0%, var(--other-color) 100%);
+  background: -webkit-linear-gradient(top, var(--primary-color) 0%, var(--other-color) 100%); 
+  background: linear-gradient(to bottom, var(--primary-color) 0%, var(--other-color) 100%);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color:transparent;
+  font-weight: bold;
+}
+
+.contact-hero .contact-description p{
+  text-align: justify;
+  width: 75%;
+}
+
+.contact-hero .direct-contact{
+  text-align: center;
+  width: 100%;
+}
+
+.contact-hero .direct-contact a{
+  text-decoration: none;
+}
+
+.contact-hero .direct-contact .contact-info{
+  margin: 0 0;
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid transparent;
+  transition: all .3s ease-in ;
+}
+
+.contact-hero .direct-contact .contact-info i{
+  background:-moz-linear-gradient(top, var(--primary-color) 0%, var(--other-color) 100%);
+  background: -webkit-linear-gradient(top, var(--primary-color) 0%, var(--other-color) 100%); 
+  background: linear-gradient(to bottom, var(--primary-color) 0%, var(--other-color) 100%);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color:transparent;
+  font-weight: bold;
+  font-size: 20pt;
+}
+
+.contact-hero .direct-contact .contact-info h6{
+  margin-top: 3px;
+  font-size: 11pt;
+  font-weight: lighter;
+  color: var(--contrast-color);
+  transition: color .3s ease-in;
+}
+
+.contact-hero .direct-contact .contact-info:hover{
+  border-color: var(--other-color);
+  box-shadow: 0 0 10px 0 rgb(249, 215, 0, .3);
+}
+
+.contact-hero .direct-contact .contact-info:hover h6{
+  color: var(--other-color);
+  text-decoration: underline wavy;
+}
+
+.contact-hero .contact-form{
+  padding: 8%;
+  border-radius: 20px;
+  background: url('../img/wave.png') bottom no-repeat ;
+  background-size: contain;
+  box-shadow: 0 8px 32px 0 var(--secondary-color);
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  border-radius: 10px;
+}
+
+.contact-hero .contact-form h4{
+  color: #6e6e6e;
+  font-weight: bold;
+}
+
+.contact-hero .contact-form label.form-label{
+  background:-moz-linear-gradient(top, var(--primary-color) 0%, var(--other-color) 100%);
+  background: -webkit-linear-gradient(top, var(--primary-color) 0%, var(--other-color) 100%); 
+  background: linear-gradient(to bottom, var(--primary-color) 0%, var(--other-color) 100%);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color:transparent;
+  font-weight: 600;
+}
+
+.contact-hero .contact-form .form-control-icon {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: #6e6e6e;
+}
+
+.contact-hero .contact-form input{
+  padding-left: 15%;
+  color: var(--primary-color);
+}
+
+.contact-hero .contact-form textarea{
+  color: var(--primary-color);
+}
+
+.contact-hero .contact-form input,
+.contact-hero .contact-form input:active,
+.contact-hero .contact-form input:focus,
+.contact-hero .contact-form textarea,
+.contact-hero .contact-form textarea:focus{
+  border: none;
+  background-color: #414141;
+}
+
+.contact-hero .contact-form button{
+  width: 20%;
+  text-align: center;
+  position: relative;
+  left: 5%;
+  font-weight: bold;
+  color: #272727;
+  border: none;
+  background: var(--primary-color);
+  transition: all .3s ease-in;
+}
+
+.contact-hero .contact-form button:hover{
+  box-shadow: 0 3px 5px #414141;
+  background: #272727;
+  color: var(--contrast-color);
+}
+
+/* Responsive for Mobile devices: S, M & L */
+@media (max-width: 425px) {
+  .contact-hero .contact-description{
+    text-align: center;
+  }
+
+  .contact-hero .contact-description p{
+    text-align: justify;
+    width: 100%;
+  }
+
+  .contact-hero .direct-contact .contact-info{
+    border: 1px solid transparent var(--other-color);
+    box-shadow: 0 0 10px 0 rgb(249, 215, 0, .3);
+    width: 250px;
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  .contact-hero .contact-form h4{
+    text-align: center;
+  }
+
+  .contact-hero .contact-form button{
+    width: 50%;
+  }
+}
+
+/* Responsive for Tablet */
+@media (max-width: 768px) {
+  .contact-hero .contact-description{
+    text-align: center;
+  }
+
+  .contact-hero .contact-description p{
+    text-align: justify;
+    width: 100%;
+  }
+
+  .contact-hero .direct-contact .contact-info{
+    border: 1px solid transparent var(--other-color);
+    box-shadow: 0 0 10px 0 rgb(249, 215, 0, .3);
+    width: 200px;
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  .contact-hero .contact-form h4{
+    text-align: center;
+  }
+}
+
+/* Responsive for Tablet */
+@media (max-width: 1024px) {
+  .contact-hero .contact-form button{
+    width: 50%;
   }
 }
 
@@ -724,6 +981,10 @@ footer {
   background: -webkit-linear-gradient(top, var(--primary-color) 0%, var(--other-color) 100%); 
   background: linear-gradient(to bottom, var(--primary-color) 0%, var(--other-color) 100%);
   clip-path: ellipse(63% 100% at 50% 100%);
+}
+
+footer small{
+  color: #313131;
 }
 
 footer .brand {
@@ -765,18 +1026,18 @@ footer .footer-brand i{
   -moz-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color:transparent;
+  font-size: 30px;
 }
 
 footer .social-links h4,
-footer .newsletter h4{
+footer .connect h4{
   font-size: 25pt;
   font-weight: 600;
   color: #272727;
-  font-family: var(--heading-font);
 }
 
 footer .social-links{
-  font-size: 30pt;
+  font-size: 25pt;
 }
 
 footer .social-links a{
@@ -789,7 +1050,7 @@ footer .social-links a:hover{
   color: var(--contrast-color);
 }
 
-footer .newsletter button{
+footer .connect button{
   background-color: #272727;
   font-weight: 600;
   height: 100%;
@@ -799,21 +1060,20 @@ footer .newsletter button{
   transition: .2s ease-in;
 }
 
-footer .newsletter span{
+footer .connect span{
   background-color: #272727;
   border-color: #272727;
   color: var(--other-color);
 }
 
-footer .newsletter input,
-footer .newsletter input:active,
-footer .newsletter input:focus{
+footer .connect a{
+  font-size: 15pt;
   background-color: #272727;
-  border-color: #272727;
-  color: var(--other-color);
+  color: var(--primary-color);
+  transition: color .3s ease-in;
 }
 
-footer .newsletter button:hover{
+footer .connect a:hover{
   color: var(--other-color);
 }
 
@@ -868,7 +1128,7 @@ footer .copyright small{
   }
 
   footer .social-links h4,
-  footer .newsletter h4{
+  footer .connect h4{
     margin-top: 15px;
     font-size: 18pt;
   }
@@ -893,12 +1153,20 @@ footer .copyright small{
   }
 
   footer .social-links h4,
-  footer .newsletter h4{
+  footer .connect h4{
     font-size: 20pt;
   }
 
   footer .social-links{
     font-size: 20pt;
+  }
+
+  footer small{
+    display: none;
+  }
+
+  footer .connect a{
+    margin: 3px 0;
   }
 }
 
