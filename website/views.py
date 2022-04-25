@@ -1,5 +1,8 @@
-from django.shortcuts import redirect, render
+from django.core.mail.message import BadHeaderError
+from django.shortcuts import redirect, render, HttpResponse
+from .models import ContactInfo
 from .forms import ContactForm
+from django.core.mail import send_mail
 from django.contrib import messages
 from django.utils.html import format_html
 
@@ -7,7 +10,9 @@ from django.utils.html import format_html
 
 def home(request):
     template_name = 'home.html'
-    context = {}
+    context = {
+        'nbar': 'home',
+    }
     return render(request, template_name, context)
 
 def contact(request):
@@ -19,6 +24,20 @@ def contact(request):
             email = form.cleaned_data['email']
             phone = form.cleaned_data['phone']
             message = form.cleaned_data['message']
+            
+            emailSubject = f'Contact Message from {name} <{email}>'
+
+            # Uncomment this later to send email to required address
+            try:
+                send_mail(
+                    emailSubject, #subject
+                    message, #message
+                    email, #from email
+                    ['joelfah2003@gmail.com'], #to email
+                    fail_silently=False
+                )
+            except BadHeaderError:
+                return HttpResponse('Invalid header found')
 
             # Test if form data was saved and output corresponding flash message to confirm message placement or not.
             try:
@@ -45,6 +64,7 @@ def contact(request):
         form = ContactForm()
 
     context = {
+        'nbar': 'contact',
         'modelform': ContactForm
     }
     return render(request, template_name, context)
