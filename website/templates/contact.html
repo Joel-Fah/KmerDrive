@@ -54,48 +54,34 @@
                         
                     </ul>
                 </div>
-                <!-- Output Message message (Bootstrap-v5 only) -->
-                {% for msg in messages %}
-                <div class="alert alert-{%if msg.level_tag == error %}danger{% else %}{{msg.level_tag}}{% endif %} alert-dismissible fade show" role="alert">
-                    <i class="bi bi-{%if msg.level_tag == error %}exclamation-octagon-fill{% elif msg.level_tag == info %}info-circle-fill{% elif msg.level_tag == warning %}exclamation-triangle-fill{% else %}check-circle-fill{% endif %}"></i>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    {{msg.message}}
-                </div>
-                {% endfor %}
                 <div class="contact-form">
-
-                    <form action="{% url 'contact' %}" method="post">
-                        {% csrf_token %}
+                    <form action="" method="post">
                         <h4>Contact Form</h4>
                         <div class="row">
                             <div class="col-sm-12 col-md-6 col-lg-6">
                                 <div class="mb-3">
                                   <label for="name" class="form-label">Your Name</label>
                                   <span class="fa fa-user form-control-icon"></span>
-                                  {% comment %} <input type="text" name="name" id="name" class="form-control" placeholder="First & Last Names" aria-describedby="helpId"> {% endcomment %}
-                                  {{modelform.name}}
+                                  <input type="text" name="name" id="name" class="form-control" placeholder="First & Last Names" aria-describedby="helpId">
                                   <!-- <small id="helpId" class="text-muted">Help text</small> -->
                                 </div>
                                 <div class="mb-3">
                                   <label for="email" class="form-label">Email</label>
                                   <span class="fa fa-at form-control-icon"></span>
-                                  {% comment %} <input type="email" name="email" id="email" class="form-control" placeholder="abc@xyz.com" aria-describedby="helpId"> {% endcomment %}
-                                  {{modelform.email}}
+                                  <input type="email" name="email" id="email" class="form-control" placeholder="abc@xyz.com" aria-describedby="helpId">
                                   <!-- <small id="helpId" class="text-muted">Help text</small> -->
                                 </div>
                                 <div class="mb-3">
                                   <label for="phone" class="form-label">Telephone</label>
                                   <span class="fa fa-phone form-control-icon"></span>
-                                  {% comment %} <input type="tel" name="phone" id="phone" class="form-control" placeholder="phone number" aria-describedby="helpId"> {% endcomment %}
-                                  {{modelform.phone}}
+                                  <input type="tel" name="phone" id="phone" class="form-control" placeholder="phone number" aria-describedby="helpId">
                                   <!-- <small id="helpId" class="text-muted">Help text</small> -->
                                 </div>
                             </div>
                             <div class="col-sm-12 col-md-6 col-lg-6">
                                 <div class="mb-3">
                                   <label for="message" class="form-label">Message</label>
-                                  {% comment %} <textarea class="form-control" name="message" id="message" rows="8" placeholder="Tell us about ..."></textarea> {% endcomment %}
-                                  {{modelform.message}}
+                                  <textarea class="form-control" name="message" id="message" rows="8" placeholder="Tell us about ..."></textarea>
                                 </div>
                             </div>
                             
