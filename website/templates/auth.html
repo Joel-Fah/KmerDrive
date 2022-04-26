@@ -21,7 +21,7 @@
       <div class="forms-container">
         <div class="signin-signup">
           
-          <form action="" class="sign-in-form" atocomplete='off'>
+          <form action="" method="post" class="sign-in-form" atocomplete='off'>
             {% csrf_token %}
             <img src="{% static 'img/auth/avatar-male.svg' %}" alt="avatar">
             <h2 class="title">Sign in</h2>
@@ -53,7 +53,7 @@
             <a href="{% url 'home' %}" class="later-text">Have a look and login later <i class="fa fa-chevron-right"></i></a>
           </form>
 
-          <form action="" class="sign-up-form">
+          <form action="" method="post" class="sign-up-form">
             {% csrf_token %}
             <img src="{% static 'img/auth/avatar-female.svg' %}" alt="avatar">
             <h2 class="title">Sign up</h2>

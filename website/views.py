@@ -35,7 +35,7 @@ def auth(request):
                 msg = """
                 Registration failed! Please try again. If the problem persists, <a href='{url}>Contact us</a>
                 """
-                url = reverse('contact')
+                url = reverse('website:contact')
                 message_out_error = format_html(msg)
                 messages.error(
                     request,
@@ -43,7 +43,7 @@ def auth(request):
                 )
             
             # Redirect to mainapp
-            return redirect('home')
+            return redirect('website:home')
     context = {
         'registerForm': registerForm
     }
