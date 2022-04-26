@@ -1,3 +1,4 @@
+from re import template
 from django.core.mail.message import BadHeaderError
 from django.shortcuts import redirect, render, HttpResponse
 from .models import ContactInfo
@@ -8,6 +9,11 @@ from django.utils.html import format_html
 from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
+
+def auth(request):
+    template_name = 'auth.html'
+    context = {}
+    return render(request, template_name, context)
 
 def home(request):
     template_name = 'home.html'
