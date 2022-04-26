@@ -11,7 +11,7 @@
     <!-- (Optional) Use CSS or JS implementation -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" integrity="sha512-RXf+QSDCUQs5uwRKaDoXt55jygZZm2V++WUZduaU/Ui/9EGp3f/2KZVahFZBKGH0s774sd3HmrhUy+SgOFQLVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="{% static 'css/auth.css' %}" />
-    <title>KmerDrive &middot; Welcome</title>
+    <title>KmerDrive &middot; Authentification</title>
 
     <!-- Favicon -->
   <link rel="shortcut icon" href="{% static 'img/logo-transport.png' %}">
@@ -20,18 +20,20 @@
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
+          
           <form action="" class="sign-in-form" atocomplete='off'>
+            {% csrf_token %}
             <img src="{% static 'img/auth/avatar-male.svg' %}" alt="avatar">
             <h2 class="title">Sign in</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
+              <input type="text" placeholder="Username" name="username"/>
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
+              <input type="password" placeholder="Password" name="password"/>
             </div>
-            <input type="submit" value="Login" class="btn solid" />
+            <input type="submit" value="Login" class="btn solid" name="login"/>
             <p class="social-text">Or Sign in with your social account</p>
             <div class="social-media">
               <a href="#" class="social-icon">
@@ -51,22 +53,42 @@
             <a href="{% url 'home' %}" class="later-text">Have a look and login later <i class="fa fa-chevron-right"></i></a>
           </form>
 
-          <form action="#" class="sign-up-form">
+          <form action="" class="sign-up-form">
+            {% csrf_token %}
             <img src="{% static 'img/auth/avatar-female.svg' %}" alt="avatar">
             <h2 class="title">Sign up</h2>
+
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
+              {{registerForm.username}}
+              {% comment %} <input type="text" placeholder="Username" /> {% endcomment %}
             </div>
+
             <div class="input-field">
               <i class="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" />
+              {{registerForm.email}}
+              {% comment %} <input type="email" placeholder="Email" /> {% endcomment %}
             </div>
+
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
+              {{registerForm.password1}}
+              {% comment %} <input type="password" placeholder="Password" /> {% endcomment %}
             </div>
-            <input type="submit" class="btn" value="Sign up" />
+
+            <div class="input-field">
+              <i class="fas fa-check"></i>
+              {{registerForm.password2}}
+              {% comment %} <input type="password" placeholder="Password" /> {% endcomment %}
+            </div>
+
+            <input type="submit" class="btn" value="Sign up" name="register" />
+
+            {% comment %} Output error messages {% endcomment %}
+            <small>
+              {{registerForm.errors}}
+            </small>
+
             <p class="social-text">Or Sign up with your social account</p>
             <div class="social-media">
               <a href="#" class="social-icon">

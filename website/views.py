@@ -1,19 +1,69 @@
-from re import template
 from django.core.mail.message import BadHeaderError
 from django.shortcuts import redirect, render, HttpResponse
 from .models import ContactInfo
-from .forms import ContactForm
+from .forms import ContactForm, CreateUserForm
 from django.core.mail import send_mail
 from django.contrib import messages
 from django.utils.html import format_html
 from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse
+from django.utils.safestring import mark_safe
+from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 
 def auth(request):
     template_name = 'auth.html'
-    context = {}
+    registerForm = CreateUserForm
+    
+    if "register" in request.method  == 'POST':
+        registerForm = CreateUserForm(request.POST)
+        if registerForm.is_valid():
+            username = registerForm.cleaned_data.get('username')
+            
+            # Test if form data was saved and output corresponding flash message to confirm message placement or not.
+            try:
+                registerForm.save()
+                message_out_success = format_html(
+                    f'You are succesfully registered as <strong>{username}</strong>'
+                )
+                messages.success(
+                    request,
+                    message_out_success
+                )
+            except:
+                msg = """
+                Registration failed! Please try again. If the problem persists, <a href='{url}>Contact us</a>
+                """
+                url = reverse('contact')
+                message_out_error = format_html(msg)
+                messages.error(
+                    request,
+                    mark_safe(message_out_error.format(url=url))
+                )
+            
+            # Redirect to mainapp
+            return redirect('home')
+    context = {
+        'registerForm': registerForm
+    }
+    
+    if "login" in request.method  == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        
+        user = authenticate(request, username=username, password=password)
+        
+        if user is not None:
+            login(request, user)
+            return redirect('home')
     return render(request, template_name, context)
+
+# nso boys
+# tamba linus
+# 20*4000=80000
+# fees 2000
+# 82000
 
 def home(request):
     template_name = 'home.html'
