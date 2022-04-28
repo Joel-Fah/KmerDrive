@@ -1,0 +1,222 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+
+:root {
+    --primary-color: #f9d700
+        /*rgb(249,215,0)*/
+    ;
+    --secondary-color: #000000
+        /*rgb(0,0,0)*/
+    ;
+    --contrast-color: #ffffff
+        /*rgb(255, 255, 255)*/
+    ;
+    --other-color: #ffa500
+        /*rgb(255,165,0)*/
+    ;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    /* box-sizing: border-box; */
+}
+
+body {
+    overflow: hidden;
+    height: 100%;
+}
+
+body,
+input {
+    font-family: "Poppins", sans-serif;
+}
+
+.left-panel {
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    border-bottom-right-radius: 100%;
+    background: -moz-linear-gradient(top, var(--primary-color) 0%, var(--other-color) 100%);
+    background: -webkit-linear-gradient(top, var(--primary-color) 0%, var(--other-color) 100%);
+    background: linear-gradient(to top, var(--primary-color) 0%, var(--other-color) 100%);
+}
+
+.right-panel {
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    border-bottom-left-radius: 100%;
+    background: -moz-linear-gradient(top, var(--primary-color) 0%, var(--other-color) 100%);
+    background: -webkit-linear-gradient(top, var(--primary-color) 0%, var(--other-color) 100%);
+    background: linear-gradient(to bottom, var(--primary-color) 0%, var(--other-color) 100%);
+}
+
+.left-panel .content,
+.right-panel .content {
+    color: var(--contrast-color);
+    padding-top: 10%;
+}
+
+.left-panel .content img.logo,
+.right-panel .content img.logo {
+    width: 20%;
+}
+
+.left-panel .content p,
+.right-panel .content p {
+    padding: 0 20%;
+}
+
+.left-panel .content a,
+.right-panel .content a {
+    padding: 10px 20px;
+    text-align: center;
+    background: none;
+    border: 2px solid #fff;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease-in;
+}
+
+.left-panel .content a:hover,
+.right-panel .content a:hover {
+    background: #333333;
+    border-color: transparent;
+    box-shadow: 0px 0px 15px #333333;
+    color: var(--contrast-color);
+}
+
+.left-panel .image {
+    width: 75%;
+    position: relative;
+    top: 10%;
+}
+
+.right-panel .image{
+    width: 65%;
+    position: relative;
+    top: 5%;
+}
+
+.login-form {
+    width: 100%;
+    padding: 15% 20%;
+}
+
+.register-form {
+    width: 100%;
+    padding: 5% 20%;
+}
+
+.login-form img,
+.register-form img {
+    width: 25%;
+}
+
+.login-form .input-field,
+.register-form .input-field {
+    max-width: 320px;
+    width: 100%;
+    background-color: #f0f0f0;
+    height: 55px;
+    border-radius: 55px;
+    margin: 10px 60px;
+}
+
+.login-form .input-field i,
+.register-form .input-field i {
+    text-align: center;
+    line-height: 55px;
+    color: #acacac;
+    transition: 0.5s;
+    font-size: 1.1rem;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.login-form .input-field input,
+.register-form .input-field input {
+    background: none;
+    outline: none;
+    border: none;
+    line-height: 1;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.login-form .input-field input::placeholder,
+.register-form .input-field input::placeholder {
+    color: #aaa;
+    font-weight: 500;
+}
+
+.login-form .btn,
+.register-form .btn {
+    width: 150px;
+    background-color: #f9d700;
+    border: none;
+    outline: none;
+    height: 49px;
+    border-radius: 49px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 10px 0;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.login-form .btn:hover,
+.register-form .btn:hover {
+    background-color: var(--other-color);
+}
+
+.login-form .social-text,
+.register-form .social-text {
+    padding: 0.7rem 0;
+    font-size: 1rem;
+}
+
+.login-form .social-media,
+.register-form .social-media {
+    display: flex;
+    justify-content: center;
+}
+
+.login-form .social-icon,
+.register-form .social-icon {
+    height: 46px;
+    width: 46px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0.45rem;
+    color: #333;
+    border-radius: 50%;
+    border: 1px solid #333;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: 0.3s;
+}
+
+.login-form .social-icon:hover,
+.register-form .social-icon:hover {
+    color: var(--other-color);
+    border-color: var(--other-color);
+}
+
+.login-form .later-text,
+.register-form .later-text {
+    text-decoration: none;
+    color: #dfa806;
+    transition: all .3s ease-in;
+}
+
+.login-form .later-text:hover,
+.register-form .later-text:hover {
+    color: #333;
+    text-decoration: underline;
+}

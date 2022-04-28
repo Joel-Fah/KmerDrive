@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Bootstrap CSS and FontAwesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <link rel="stylesheet" href="{% static 'css/authenticate.css' %}" />
+    <title>KmerDrive &middot; Register</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'img/logo-transport.png' %}">
+  </head>
+  <body>
+      <div class="row">
+
+          <div class="col-sm-12 col-md-6 col-lg-6">
+              <div class="register-form text-center">
+                <img src="{% static 'img/auth/avatar-female.svg' %}" alt="avatar" class="img-fluid">
+                <h2 class="title">Sign Up</h2>
+                  <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        {{registerForm.first_name}}
+                        <!-- <input type="text" placeholder="Username" name="username"/> -->
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        {{registerForm.username}}
+                        <!-- <input type="text" placeholder="Username" name="username"/> -->
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        {{registerForm.email}}
+                        <!-- <input type="text" placeholder="Email" name="email"/> -->
+                    </div>
+                    <div class="input-field">
+                      <i class="fas fa-lock"></i>
+                      {{registerForm.password1}}
+                      <!-- <input type="password" placeholder="Password" name="password"/> -->
+                    </div>
+                    <div class="input-field">
+                      <i class="fas fa-check"></i>
+                      {{registerForm.password2}}
+                      <!-- <input type="password" placeholder="Confirm Password" name="password2"/> -->
+                    </div>
+
+                  <input type="submit" value="Register" class="btn" name="register"/>
+
+                  <small class="text-danger">
+                      {{registerForm.errors}}
+                  </small>
+
+                  <p class="social-text text-muted">Or Sign up with your social account</p>
+                  <div class="social-media">
+                    <a href="#" class="social-icon">
+                      <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                      <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                      <i class="fab fa-google"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                      <i class="fab fa-github"></i>
+                    </a>
+                  </div>
+                  <br>
+                  <a href="{% url 'website:home' %}" class="later-text">Have a look and register later <i class="fa fa-chevron-right"></i></a>
+                  </form>
+              </div>
+          </div>
+
+          <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="right-panel">
+              <div class="content">
+                  <img src="{% static 'img/logo3.png' %}" alt="" class="img-fluid logo">
+                  <h3>Already one of us ?</h3>
+                  <p>
+                      Already have an account? Login and continue using our services where you left.
+                  </p>
+                  <a href="{% url 'website:login' %}" class="btn transparent" id="sign-up-btn">
+                    Sign In &ThickSpace; 
+                    <i class="fa fa-chevron-right"></i>
+                  </a>
+              </div>
+              <img src="{% static 'img/auth/signup2.svg' %}" class="img-fluid image" alt="" />
+            </div>
+        </div>
+
+      </div>
+  </body>
+</html>

@@ -64,6 +64,7 @@ class CreateUserForm(UserCreationForm):
     class Meta:
         model = User
         fields = [
+            'first_name',
             'username',
             'email',
             'password1',
@@ -71,6 +72,12 @@ class CreateUserForm(UserCreationForm):
         ]
         
         widgets = {
+            'first_name': TextInput(
+                attrs={
+                    'placeholder': 'Full Name (optional)',
+                }
+            ),
+            
             'username': TextInput(
                 attrs={
                     'placeholder': 'Username',

@@ -1,9 +1,12 @@
 from django.urls import path
-from .views import auth, home, contact
+from .views import home, contact, register, user_login, user_logout
 
 # Creat your urls here.
+app_name = 'website'
+
 urlpatterns = [
-    path('auth/', auth, name='auth'),
+    path('register/', register, name='register'),
+    path('login/', user_login, name='login'),
     path('', home, name='home'),
     path('contact/', contact, name='contact'),
 ]

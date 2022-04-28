@@ -6,17 +6,18 @@ from django.core.mail import send_mail
 from django.contrib import messages
 from django.utils.html import format_html
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.urls import reverse
 from django.utils.safestring import mark_safe
 from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 
-def auth(request):
-    template_name = 'auth.html'
+def register(request):
+    template_name = 'register.html'
     registerForm = CreateUserForm
     
-    if "register" in request.method  == 'POST':
+    if request.method  == 'POST':
         registerForm = CreateUserForm(request.POST)
         if registerForm.is_valid():
             username = registerForm.cleaned_data.get('username')
@@ -33,9 +34,9 @@ def auth(request):
                 )
             except:
                 msg = """
-                Registration failed! Please try again. If the problem persists, <a href='{url}>Contact us</a>
+                Registration failed! Please try again. If the problem persists, <a href='{url}'>Contact us</a>
                 """
-                url = reverse('website:contact')
+                url = reverse('contact')
                 message_out_error = format_html(msg)
                 messages.error(
                     request,
@@ -43,12 +44,16 @@ def auth(request):
                 )
             
             # Redirect to mainapp
-            return redirect('website:home')
+            return redirect('mainapp:app')
     context = {
         'registerForm': registerForm
     }
     
-    if "login" in request.method  == 'POST':
+    return render(request, template_name, context)
+    
+def user_login(request):
+    template_name = 'login.html'
+    if request.method  == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
         
@@ -56,14 +61,25 @@ def auth(request):
         
         if user is not None:
             login(request, user)
-            return redirect('home')
-    return render(request, template_name, context)
+            message_out_success = format_html(
+                f'You are successfully logged in as <strong> {username} </strong>!'
+            )
+            messages.success(
+                request,
+                message_out_success
+            )
+            return redirect('mainapp:app')
+        else:
+            messages.error(
+                request,
+                f'Login failed! Verify your username and password.'
+            )
+            return redirect('website:login')
+        
+    return render(request, template_name)
 
-# nso boys
-# tamba linus
-# 20*4000=80000
-# fees 2000
-# 82000
+def user_logout(request):
+    pass
 
 def home(request):
     template_name = 'home.html'
@@ -116,7 +132,7 @@ def contact(request):
                 )
             
             # Redidrect to the same page with message output.
-            return redirect('contact')
+            return redirect('website:contact')
         else:
             form = ContactForm()
 

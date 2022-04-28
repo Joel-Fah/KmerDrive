@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Bootstrap CSS and FontAwesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <link rel="stylesheet" href="{% static 'css/authenticate.css' %}" />
+    <title>KmerDrive &middot; Login</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'img/logo-transport.png' %}">
+  </head>
+  <body>
+      <div class="row">
+          
+          <div class="col-sm-12 col-md-6 col-lg-6">
+              <div class="left-panel">
+                <div class="content">
+                    <img src="{% static 'img/logo3.png' %}" alt="" class="img-fluid logo">
+                    <h3>New Here Instead ?</h3>
+                    <p>
+                      Don't have an account yet? Register and discover what you can do with KmerDrive.
+                    </p>
+                    <a href="{% url 'website:register' %}" class="btn transparent" id="sign-up-btn">
+                      <i class="fa fa-chevron-left"></i> &ThickSpace; Sign Up
+                    </a>
+                </div>
+                <img src="{% static 'img/auth/signin.svg' %}" class="img-fluid image" alt="" />
+              </div>
+          </div>
+
+          <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="login-form text-center">
+                <!-- Output Message message (Bootstrap-v5 only) -->
+                {% for msg in messages %}
+                  {% if msg.level_tag == 'error' %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                      <i class="bi bi-exclamation-octagon-fill"></i>
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      {{msg.message}}
+                    </div>
+                  {% else %}
+                    <div class="alert alert-{{msg.level_tag}} alert-dismissible fade show" role="alert">
+                      <i class="bi bi-{% if msg.level_tag == info %}info-circle-fill{% elif msg.level_tag == warning %}exclamation-triangle-fill{% else %}check-circle-fill{% endif %}"></i>
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      {{msg.message}}
+                    </div>
+                  {% endif %}
+                {% endfor %}
+
+                <img src="{% static 'img/auth/avatar-male.svg' %}" alt="avatar" class="img-fluid">
+                <h2 class="title">Sign in</h2>
+                  <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="Username" name="username"/>
+                    </div>
+                    <div class="input-field">
+                      <i class="fas fa-lock"></i>
+                      <input type="password" placeholder="Password" name="password"/>
+                  </div>
+                  <input type="submit" value="Login" class="btn solid" name="login"/>
+                  <p class="social-text text-muted">Or Sign in with your social account</p>
+                  <div class="social-media">
+                    <a href="#" class="social-icon">
+                      <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                      <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                      <i class="fab fa-google"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                      <i class="fab fa-github"></i>
+                    </a>
+                  </div>
+                  <br>
+                  <a href="{% url 'website:home' %}" class="later-text">Have a look and login later <i class="fa fa-chevron-right"></i></a>
+                  </form>
+              </div>
+          </div>
+
+      </div>
+  </body>
+</html>
