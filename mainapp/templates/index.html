@@ -10,12 +10,20 @@
 
     <!-- Output Message message (Bootstrap-v5 only) -->
     {% for msg in messages %}
-    <div class="alert alert-{%if msg.level_tag == error %}danger{% else %}{{msg.level_tag}}{% endif %} alert-dismissible fade show" role="alert">
-        <i class="bi bi-{%if msg.level_tag == error %}exclamation-octagon-fill{% elif msg.level_tag == info %}info-circle-fill{% elif msg.level_tag == warning %}exclamation-triangle-fill{% else %}check-circle-fill{% endif %}"></i>
+    {% if msg.level_tag == 'error' %}
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <i class="bi bi-exclamation-octagon-fill"></i>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         {{msg.message}}
-    </div>
-    {% endfor %}
+      </div>
+    {% else %}
+      <div class="alert alert-{{msg.level_tag}} alert-dismissible fade show" role="alert">
+        <i class="bi bi-{% if msg.level_tag == info %}info-circle-fill{% elif msg.level_tag == warning %}exclamation-triangle-fill{% else %}check-circle-fill{% endif %}"></i>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {{msg.message}}
+      </div>
+    {% endif %}
+  {% endfor %}
     
     <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12">

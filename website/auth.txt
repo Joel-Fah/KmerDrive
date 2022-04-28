@@ -1,0 +1,95 @@
+def register(request):
+    template_name = 'register.html'
+    if request.method == 'POST':
+        username = request.POST['username']
+        email = request.POST['email']
+        password = request.POST['password1']
+        password2 = request.POST['password2']
+
+        # Check if passwords are compatible. (password1 == password2)
+        if password == password2:
+            if User.objects.filter(email=email).exists():
+                # Test if form data was saved and output corresponding flash message to confirm message placement or not.
+                try:
+                    message_out_success = format_html(
+                        f'The email address: <strong>{email}</strong> already exists! Try another one.'
+                    )
+                    messages.info(
+                        request,
+                        message_out_success
+                    )
+                except:
+                    msg = """
+                    Registration failed! Please check your connection and try again. 
+                    If the problem persists, <a href='{url}'>Contact us</a>
+                    """
+                    url = reverse('contact')
+                    message_out_error = format_html(msg)
+                    messages.error(
+                        request,
+                        mark_safe(message_out_error.format(url=url))
+                    )
+                return redirect('register')
+            elif User.objects.filter(username=username).exists():
+                # Test if form data was saved and output corresponding flash message to confirm message placement or not.
+                try:
+                    message_out_success = format_html(
+                        f'The username: <strong>{email}</strong> is already used! Try another one.'
+                    )
+                    messages.info(
+                        request,
+                        message_out_success
+                    )
+                except:
+                    msg = """
+                    Registration failed! Please check your connection and try again. 
+                    If the problem persists, <a href='{url}'>Contact us</a>
+                    """
+                    url = reverse('contact')
+                    message_out_error = format_html(msg)
+                    messages.error(
+                        request,
+                        mark_safe(message_out_error.format(url=url))
+                    )
+                return redirect('register')
+            else :
+                user = User.objects.create_user(username=username, email=email, password=password)
+                user.save()
+                return redirect('home')
+        else :
+            messages.info(
+                request,
+                'Passwords do not match!'
+            )
+            return redirect('auth')
+    else :
+        return render(request, template_name)
+    
+def login(request):
+    template_name = 'login.html'
+    if 'login' in request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(request, user)
+            # TODO: redirect to specific dashboard of specific "user"
+        else :
+            messages.info(
+                request,
+                'User not found! Verify your credentials.'
+            )
+            return redirect('login')
+    else :
+        return render(request, template_name)
+    
+def logout(request):
+    user = request.user
+    if user.is_authenticated:
+        logout(request)
+        messages.info(
+                request,
+                'You succesfully logged out!'
+            )
+        return redirect('home')

@@ -11,7 +11,7 @@
     <!-- (Optional) Use CSS or JS implementation -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" integrity="sha512-RXf+QSDCUQs5uwRKaDoXt55jygZZm2V++WUZduaU/Ui/9EGp3f/2KZVahFZBKGH0s774sd3HmrhUy+SgOFQLVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="{% static 'css/auth.css' %}" />
-    <title>KmerDrive &middot; Authentification</title>
+    <title>KmerDrive &middot; Authentication</title>
 
     <!-- Favicon -->
   <link rel="shortcut icon" href="{% static 'img/logo-transport.png' %}">
@@ -21,8 +21,7 @@
       <div class="forms-container">
         <div class="signin-signup">
           
-          <form action="" class="sign-in-form" atocomplete='off'>
-            {% csrf_token %}
+          <form action="" method="post" class="sign-in-form" atocomplete='off'>
             <img src="{% static 'img/auth/avatar-male.svg' %}" alt="avatar">
             <h2 class="title">Sign in</h2>
             <div class="input-field">
@@ -50,36 +49,35 @@
               </a>
             </div>
             <br>
-            <a href="{% url 'home' %}" class="later-text">Have a look and login later <i class="fa fa-chevron-right"></i></a>
+            <a href="{% url 'website:home' %}" class="later-text">Have a look and login later <i class="fa fa-chevron-right"></i></a>
           </form>
 
-          <form action="" class="sign-up-form">
-            {% csrf_token %}
+          <form action="" method="post" class="sign-up-form">
             <img src="{% static 'img/auth/avatar-female.svg' %}" alt="avatar">
             <h2 class="title">Sign up</h2>
 
             <div class="input-field">
               <i class="fas fa-user"></i>
-              {{registerForm.username}}
-              {% comment %} <input type="text" placeholder="Username" /> {% endcomment %}
+              {% comment %} {{registerForm.username}} {% endcomment %}
+              <input type="text" placeholder="Username" name="username"/>
             </div>
 
             <div class="input-field">
               <i class="fas fa-envelope"></i>
-              {{registerForm.email}}
-              {% comment %} <input type="email" placeholder="Email" /> {% endcomment %}
+              {% comment %} {{registerForm.email}} {% endcomment %}
+              <input type="email" placeholder="Email" name="email"/>
             </div>
 
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              {{registerForm.password1}}
-              {% comment %} <input type="password" placeholder="Password" /> {% endcomment %}
+              {% comment %} {{registerForm.password1}} {% endcomment %}
+              <input type="password" placeholder="Password" name="password"/>
             </div>
 
             <div class="input-field">
               <i class="fas fa-check"></i>
-              {{registerForm.password2}}
-              {% comment %} <input type="password" placeholder="Password" /> {% endcomment %}
+              {% comment %} {{registerForm.password2}} {% endcomment %}
+              <input type="password" placeholder="Confirm Password" name="password2"/>
             </div>
 
             <input type="submit" class="btn" value="Sign up" name="register" />
@@ -105,7 +103,7 @@
               </a>
             </div>
             <br>
-            <a href="{% url 'home' %}" class="later-text">Have a look and register later <i class="fa fa-chevron-right"></i></a>
+            <a href="{% url 'website:home' %}" class="later-text">Have a look and register later <i class="fa fa-chevron-right"></i></a>
           </form>
         </div>
       </div>
