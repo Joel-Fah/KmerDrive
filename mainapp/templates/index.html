@@ -8,25 +8,24 @@
 {% block body %}
 <div class="main">
 
-    <!-- Output Message message (Bootstrap-v5 only) -->
-    {% for msg in messages %}
-    {% if msg.level_tag == 'error' %}
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <i class="bi bi-exclamation-octagon-fill"></i>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        {{msg.message}}
-      </div>
-    {% else %}
-      <div class="alert alert-{{msg.level_tag}} alert-dismissible fade show" role="alert">
-        <i class="bi bi-{% if msg.level_tag == info %}info-circle-fill{% elif msg.level_tag == warning %}exclamation-triangle-fill{% else %}check-circle-fill{% endif %}"></i>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        {{msg.message}}
-      </div>
-    {% endif %}
-  {% endfor %}
-    
     <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12">
+            <!-- Output Message message (Bootstrap-v5 only) -->
+            {% for msg in messages %}
+                {% if msg.level_tag == 'error' %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <i class="bi bi-exclamation-octagon-fill"></i>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    {{msg.message}}
+                </div>
+                {% else %}
+                <div class="alert alert-{{msg.level_tag}} alert-dismissible fade show" role="alert">
+                    <i class="bi bi-{% if msg.level_tag == info %}info-circle-fill{% elif msg.level_tag == warning %}exclamation-triangle-fill{% else %}check-circle-fill{% endif %}"></i>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    {{msg.message}}
+                </div>
+                {% endif %}
+            {% endfor %}
             <h4>Navigation Map</h4>
             <div class="map">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.9054858590353!2d11.549292614841518!3d3.8304506496544266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x108bc5347ce2ba5d%3A0x76de28d6bce0db35!2sAwae%20Escalier!5e0!3m2!1sen!2scm!4v1650812642618!5m2!1sen!2scm" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>

@@ -15,71 +15,83 @@ from django.contrib.auth import authenticate, login, logout
 
 def register(request):
     template_name = 'register.html'
-    registerForm = CreateUserForm
     
-    if request.method  == 'POST':
-        registerForm = CreateUserForm(request.POST)
-        if registerForm.is_valid():
-            username = registerForm.cleaned_data.get('username')
+    if request.user.is_authenticated:
+        return redirect('website:home')
+    else:
+        registerForm = CreateUserForm
+        
+        if request.method  == 'POST':
+            registerForm = CreateUserForm(request.POST)
+            if registerForm.is_valid():
+                username = registerForm.cleaned_data.get('username')
+                
+                # Test if form data was saved and output corresponding flash message to confirm message placement or not.
+                try:
+                    registerForm.save()
+                    message_out_success = format_html(
+                        f'Registration successful! Now log into your account.'
+                    )
+                    messages.success(
+                        request,
+                        message_out_success
+                    )
+                except:
+                    msg = """
+                    Registration failed! Please try again. If the problem persists, <a href='{url}'>Contact us</a>
+                    """
+                    url = reverse('contact')
+                    message_out_error = format_html(msg)
+                    messages.error(
+                        request,
+                        mark_safe(message_out_error.format(url=url))
+                    )
+                
+                # Redirect to mainapp
+                return redirect('website:login')
+        context = {
+            'registerForm': registerForm
+        }
+        
+        return render(request, template_name, context)
+    
+def user_login(request):
+    template_name = 'login.html'
+    if request.user.is_authenticated:
+        return redirect('website:home')
+    else:
+        if request.method  == 'POST':
+            username = request.POST.get('username')
+            password = request.POST.get('password')
             
-            # Test if form data was saved and output corresponding flash message to confirm message placement or not.
-            try:
-                registerForm.save()
+            user = authenticate(request, username=username, password=password)
+            
+            if user is not None:
+                login(request, user)
                 message_out_success = format_html(
-                    f'You are succesfully registered as <strong>{username}</strong>'
+                    f'You are successfully logged in as <strong>{username}</strong>!'
                 )
                 messages.success(
                     request,
                     message_out_success
                 )
-            except:
-                msg = """
-                Registration failed! Please try again. If the problem persists, <a href='{url}'>Contact us</a>
-                """
-                url = reverse('contact')
-                message_out_error = format_html(msg)
+                return redirect('mainapp:app')
+            else:
                 messages.error(
                     request,
-                    mark_safe(message_out_error.format(url=url))
+                    f'Login failed! Incorrect username or password.'
                 )
+                return redirect('website:login')
             
-            # Redirect to mainapp
-            return redirect('mainapp:app')
-    context = {
-        'registerForm': registerForm
-    }
-    
-    return render(request, template_name, context)
-    
-def user_login(request):
-    template_name = 'login.html'
-    if request.method  == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        
-        user = authenticate(request, username=username, password=password)
-        
-        if user is not None:
-            login(request, user)
-            message_out_success = format_html(
-                f'You are successfully logged in as <strong> {username} </strong>!'
-            )
-            messages.success(
-                request,
-                message_out_success
-            )
-            return redirect('mainapp:app')
-        else:
-            messages.error(
-                request,
-                f'Login failed! Verify your username and password.'
-            )
-            return redirect('website:login')
-        
-    return render(request, template_name)
+        return render(request, template_name)
 
 def user_logout(request):
-    pass
+    logout(request)
+    messages.info(
+        request,
+        f'You are now loggged out.'
+    )
+    return redirect('website:login')
 
 def home(request):
     template_name = 'home.html'
