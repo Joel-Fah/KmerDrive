@@ -65,6 +65,7 @@ class CreateUserForm(UserCreationForm):
         model = User
         fields = [
             'first_name',
+            'last_name',
             'username',
             'email',
             'password1',
@@ -75,6 +76,12 @@ class CreateUserForm(UserCreationForm):
             'first_name': TextInput(
                 attrs={
                     'placeholder': 'Full Name (optional)',
+                }
+            ),
+            
+            'last_name': TextInput(
+                attrs={
+                    'placeholder': 'Last Name (optional)',
                 }
             ),
             

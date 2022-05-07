@@ -26,34 +26,39 @@
                     {% csrf_token %}
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        {{registerForm.first_name}}
+                        {{form.first_name}}
                         <!-- <input type="text" placeholder="Username" name="username"/> -->
                     </div>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        {{registerForm.username}}
+                        {{form.last_name}}
+                        <!-- <input type="text" placeholder="Username" name="username"/> -->
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-at"></i>
+                        {{form.username}}
                         <!-- <input type="text" placeholder="Username" name="username"/> -->
                     </div>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        {{registerForm.email}}
+                        {{form.email}}
                         <!-- <input type="text" placeholder="Email" name="email"/> -->
                     </div>
                     <div class="input-field">
                       <i class="fas fa-lock"></i>
-                      {{registerForm.password1}}
+                      {{form.password1}}
                       <!-- <input type="password" placeholder="Password" name="password"/> -->
                     </div>
                     <div class="input-field">
                       <i class="fas fa-check"></i>
-                      {{registerForm.password2}}
+                      {{form.password2}}
                       <!-- <input type="password" placeholder="Confirm Password" name="password2"/> -->
                     </div>
 
                   <input type="submit" value="Register" class="btn" name="register"/>
 
                   <small class="text-danger">
-                      {{registerForm.errors}}
+                      {{form.errors}}
                   </small>
 
                   <p class="social-text text-muted">Or Sign up with your social account</p>
@@ -72,7 +77,6 @@
                     </a>
                   </div>
                   <br>
-                  <a href="{% url 'website:home' %}" class="later-text">Have a look and register later <i class="fa fa-chevron-right"></i></a>
                   </form>
               </div>
           </div>
@@ -89,6 +93,9 @@
                     Sign In &ThickSpace; 
                     <i class="fa fa-chevron-right"></i>
                   </a>
+                  <br/>
+                  <a href="{% url 'website:home' %}" class="later-text">Or take a visit and register later <i class="fa fa-chevron-right"></i></a>
+
               </div>
               <img src="{% static 'img/auth/signup2.svg' %}" class="img-fluid image" alt="" />
             </div>

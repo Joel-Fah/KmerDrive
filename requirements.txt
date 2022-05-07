@@ -1,11 +1,14 @@
 asgiref==3.5.0
+autopep8==1.6.0
 Django==4.0.4
 django-environ==0.8.1
 django-gunicorn==0.1.1
 gunicorn==20.1.0
 Pillow==9.1.0
+pycodestyle==2.8.0
 python-decouple==3.6
 python-dotenv==0.20.0
 python-environ==0.4.54
 sqlparse==0.4.2
+toml==0.10.2
 tzdata==2022.1

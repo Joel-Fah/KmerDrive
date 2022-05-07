@@ -10,25 +10,36 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from django.utils.safestring import mark_safe
 from django.contrib.auth import authenticate, login, logout
+from django.views.generic import TemplateView
+from django.views import View
 
 # Create your views here.
 
-def register(request):
+class RegisterView(View):
+    form_class = CreateUserForm
+    initial = {'key': 'value'}
     template_name = 'register.html'
+
+    def get(self, request, *args, **kwargs):
+        form = self.form_class(initial=self.initial)
+        context = {
+            'form': form
+        }
+        return render(request, self.template_name, context)
     
-    if request.user.is_authenticated:
-        return redirect('website:home')
-    else:
-        registerForm = CreateUserForm
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
         
-        if request.method  == 'POST':
-            registerForm = CreateUserForm(request.POST)
-            if registerForm.is_valid():
-                username = registerForm.cleaned_data.get('username')
+        # Check if user already exists.
+        if request.user.is_authenticated:
+            return redirect('website:home')
+        else:
+            if form.is_valid():
+                username = form.cleaned_data.get('username')
                 
                 # Test if form data was saved and output corresponding flash message to confirm message placement or not.
                 try:
-                    registerForm.save()
+                    form.save()
                     message_out_success = format_html(
                         f'Registration successful! Now log into your account.'
                     )
@@ -49,12 +60,12 @@ def register(request):
                 
                 # Redirect to mainapp
                 return redirect('website:login')
-        context = {
-            'registerForm': registerForm
-        }
-        
-        return render(request, template_name, context)
-    
+            context = {
+                'form': form
+            }
+            
+            return render(request, self.template_name, context)
+            
 def user_login(request):
     template_name = 'login.html'
     if request.user.is_authenticated:
@@ -64,10 +75,10 @@ def user_login(request):
             username = request.POST.get('username')
             password = request.POST.get('password')
             
-            user = authenticate(request, username=username, password=password)
+            auth_user = authenticate(request, username=username, password=password)
             
-            if user is not None:
-                login(request, user)
+            if auth_user is not None and auth_user.is_active:
+                login(request, auth_user)
                 message_out_success = format_html(
                     f'You are successfully logged in as <strong>{username}</strong>!'
                 )
@@ -75,7 +86,13 @@ def user_login(request):
                     request,
                     message_out_success
                 )
-                return redirect('mainapp:app')
+                try:
+                    if request.GET['next']:
+                        return redirect(request.GET['next'])
+                except Exception as e:
+                    return redirect(reverse('mainapp:app', kwargs={'pk':request.user.id, 'user':request.user.username}))
+                
+                # return redirect('mainapp:app', pk=request.user.id, user=request.user.username)
             else:
                 messages.error(
                     request,
@@ -93,17 +110,29 @@ def user_logout(request):
     )
     return redirect('website:login')
 
-def home(request):
-    template_name = 'home.html'
-    context = {
-        'nbar' : 'home',
-    }
-    return render(request, template_name, context)
+class HomeView(TemplateView):
+    template_name = "home.html"
 
-def contact(request):
+    def home(self, request, *args, **kwargs):
+        context = {
+            'nbar' : 'home',
+        }
+        return render(request, self.template_name, context)
+
+class ContactView(View):
+    form_class = ContactForm
+    initial = {'key': 'value'}
     template_name = 'contact.html'
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
+
+    def get(self, request, *args, **kwargs):
+        form = self.form_class(initial=self.initial)
+        context = {
+            'form': form
+        }
+        return render(request, self.template_name, context)
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
         if form.is_valid():
             name = form.cleaned_data['name']
             email = form.cleaned_data['email']
@@ -148,8 +177,8 @@ def contact(request):
         else:
             form = ContactForm()
 
-    context = {
-        'nbar' : 'contact',
-        'modelform': ContactForm
-    }
-    return render(request, template_name, context)
+        context = {
+            'nbar' : 'contact',
+            'form': form
+        }
+        return render(request, self.template_name, context)

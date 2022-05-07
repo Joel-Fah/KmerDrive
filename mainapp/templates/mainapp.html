@@ -33,14 +33,14 @@
       <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
       <div class="account d-flex">
         <p class="text-white float-end">Hello, <span>{% firstof request.user.get_full_name request.user.username %}</span></p>
-        <div class="header_img"> <a href=""><img src="https://i.imgur.com/hczKIze.jpg" alt=""></a> </div>
+        <div class="header_img"> <a href=""><img src="https://joel-fah.github.io/joelfah.github.io/joelfah.webp" alt=""></a> </div>
       </div>
     </header>
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
             <div> 
               
-              <a href="{% url 'website:home' %}" class="nav_logo"> 
+              <a href="{% url 'mainapp:app' pk.id user.username %}" class="nav_logo"> 
                 <i class="fa fa-taxi nav_logo-icon" aria-hidden="true"></i>
                 <p class="d-block">
                   <span class="kmer">KMER</span><span class="drive">DRIVE</span>
@@ -48,13 +48,13 @@
               </a>
 
                 <div class="nav_list"> 
-                  <a href="{% url 'mainapp:app' %}" class="nav_link active"> 
+                  <a href="{% url 'mainapp:app' pk.id user.username %}" class="nav_link {% if nbar == 'actions' %}active{% endif %}"> 
                     <i class='bx bx-grid-alt nav_icon' title="Actions"></i> 
                     <span class="nav_name">Actions</span> 
                   </a> 
 
-                  <a href="#" class="nav_link"> 
-                    <i class='bx bx-user nav_icon'></i> 
+                  <a href="{% url 'mainapp:account' pk.id user.username %}" class="nav_link {% if nbar == 'account' %}active{% endif %}"> 
+                    <i class='bx bx-user nav_icon' title="Actions"></i> 
                     <span class="nav_name">My Aacount</span> 
                   </a> 
                   
