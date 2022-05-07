@@ -1,0 +1,66 @@
+{% extends 'mainapp.html' %}
+{% load static %}
+
+{% comment %} Title of the page {% endcomment %}
+{% block title %}My Account{% endblock title %}
+
+{% comment %} Body of the page {% endcomment %}
+{% block body %}
+
+<div class="account-info">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-6">
+            <div class="account-hero">
+                <div class="profile-img">
+                    <img src="{% static 'img/joelfah.webp' %}" alt="" class="img-fluid">
+                </div>
+                <div class="account-text">
+                    <h4><span>#</span>Joelfah</h4>
+                    <h5>Dejon Fah Joel Xavier</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-6">
+            <h3>Actual Profile Info</h3>
+            <small class="text-warning">
+                Last modified on this date... 
+            </small>
+            <div class="actual-info">
+                <label for="">Username</label>
+                <div class="info">
+                    <h6>joelfah</h6>
+                </div>
+            </div>
+            <div class="actual-info">
+                <label for="">First Name</label>
+                <div class="info">
+                    <h6>Dejon Fah</h6>
+                </div>
+            </div>
+            <div class="actual-info">
+                <label for="">Last Name</label>
+                <div class="info">
+                    <h6>Joel Xavier</h6>
+                </div>
+            </div>
+            <div class="actual-info">
+                <label for="">Phone Number</label>
+                <div class="info">
+                    <h6>656997810</h6>
+                </div>
+            </div>
+            <div class="actual-info">
+                <label for="">Bio</label>
+                <div class="info">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum error suscipit at, ad inventore corporis, totam sequi
+                        hic minus exercitationem ullam, nulla nesciunt voluptatum iusto aliquam. Exercitationem ducimus ut nam?
+                    </p>
+                </div>
+            </div>
+            <a href="" class="btn modify">Modify</a>
+        </div>
+
+    </div>
+</div>
+{% endblock body %}

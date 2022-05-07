@@ -420,7 +420,7 @@ body::-webkit-scrollbar-thumb {
 
 .flip-box .inner-fr{
   position: absolute;
-  left: o;
+  left: 0;
   width: 100%;
   padding: 20px;
   outline: 1px solid transparent;
@@ -432,7 +432,7 @@ body::-webkit-scrollbar-thumb {
 
 .flip-box .inner-ba{
   position: absolute;
-  left: o;
+  left: 0;
   width: 100%;
   padding: 20px;
   outline: 1px solid transparent;

@@ -67,8 +67,8 @@ input {
     padding: 0 20%;
 }
 
-.left-panel .content a,
-.right-panel .content a {
+.left-panel .content a.transparent,
+.right-panel .content .transparent {
     padding: 10px 20px;
     text-align: center;
     background: none;
@@ -79,12 +79,23 @@ input {
     transition: all 0.3s ease-in;
 }
 
-.left-panel .content a:hover,
-.right-panel .content a:hover {
+.left-panel .content a.transparent:hover,
+.right-panel .content a.transparent:hover {
     background: #333333;
     border-color: transparent;
     box-shadow: 0px 0px 15px #333333;
     color: var(--contrast-color);
+}
+
+.right-panel a.later-text {
+    text-decoration: none;
+    color: #272727;
+    transition: all .3s ease-in;
+}
+
+.right-panel a.later-text:hover {
+    color: #333;
+    text-decoration: underline;
 }
 
 .left-panel .image {
@@ -116,7 +127,7 @@ input {
 
 .login-form .input-field,
 .register-form .input-field {
-    max-width: 320px;
+    max-width: 350px;
     width: 100%;
     background-color: #f0f0f0;
     height: 55px;
@@ -208,15 +219,13 @@ input {
     border-color: var(--other-color);
 }
 
-.login-form .later-text,
-.register-form .later-text {
+.login-form .later-text {
     text-decoration: none;
     color: #dfa806;
     transition: all .3s ease-in;
 }
 
-.login-form .later-text:hover,
-.register-form .later-text:hover {
+.login-form .later-text:hover{
     color: #333;
     text-decoration: underline;
 }
