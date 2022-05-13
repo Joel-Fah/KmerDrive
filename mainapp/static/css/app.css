@@ -267,7 +267,7 @@ a {
 }
 
 .auto .action{
-    padding: 8px;
+    padding: 10px 3%;
     border-radius: 20px;
 }
 
@@ -282,12 +282,30 @@ a {
 }
 
 .auto .action p{
+    padding: 10px 20px;
     color: #fff;
     text-align: justify;
 }
 
+.auto .action.action1{
+    background: linear-gradient(to bottom,rgb(0, 0, 0, .8), rgb(0, 0, 0, .6)), url('../img/actions/setroute2.png') no-repeat center;
+    background-size: cover;
+}
+.auto .action.action2{
+    background: linear-gradient(to bottom,rgb(0, 0, 0, .8), rgb(0, 0, 0, .6)), url('../img/actions/touristmap.png') no-repeat center;
+    background-size: cover;
+}
+.auto .action.action3{
+    background: linear-gradient(to bottom,rgb(0, 0, 0, .8), rgb(0, 0, 0, .6)), url('../img/actions/taximap.png') no-repeat center;
+    background-size: cover;
+}
+.auto .action.action4{
+    background: linear-gradient(to bottom,rgb(0, 0, 0, .8), rgb(0, 0, 0, .6)), url('../img/actions/reservetaxi.png') no-repeat center;
+    background-size: cover;
+}
+
 .auto a{
-    padding: 5px 10px 5px 1 0px;
+    padding: 5px 10px 5px 10px;
     border-radius: 10px;
     text-align: center;
     font-size: 13pt;

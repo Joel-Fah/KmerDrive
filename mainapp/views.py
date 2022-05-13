@@ -17,7 +17,7 @@ class ActionsView(View):
     template_name = "index.html"
     
     def get(self, request, *args, **kwargs):
-        pk =get_object_or_404(User, id=self.kwargs["pk"])
+        pk = get_object_or_404(User, id=self.kwargs["pk"])
         user = get_object_or_404(User, username=self.kwargs["user"])
         context = {
             'nbar': 'actions',
