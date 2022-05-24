@@ -242,11 +242,16 @@ a {
     overflow: hidden;
 }
 
+.main .alert span.location{
+    font-weight: bold;
+}
+
 .main h4{
     font-size: 30pt;
     font-weight: bold;
 }
 
+#map,
 .map > iframe{
     width: 100%;
     height: 50vh;

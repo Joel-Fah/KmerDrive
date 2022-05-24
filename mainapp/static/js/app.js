@@ -53,3 +53,34 @@ document.addEventListener("DOMContentLoaded", function(event) {
       function autoOut() {
         this.style.height = "50px";
       }
+
+// Get users actual location on clicking get-location button. 
+const findMyState = () =>{
+  const location = document.querySelector('.location');
+
+  // Success function : if location is gotten correctly...
+  const success = (position) => {
+    console.log(position);
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+
+    // Pass the latitude and longitude to an API that will give us back the location.
+    const geoApiUrl = 'https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en'
+
+    // Fetch data from the API.
+    fetch(geoApiUrl)
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+    })
+  }
+
+  // Error function : if location is gotten correctly...
+  const error = (position) => {
+    location.textContent = 'location not found.'
+  }
+
+  navigator.geolocation.getCurrentPosition(success);
+}
+
+document.querySelector('.get-location').addEventListener('click', findMyState);

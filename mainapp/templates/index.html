@@ -13,22 +13,36 @@
             <!-- Output Message message (Bootstrap-v5 only) -->
             {% for msg in messages %}
                 {% if msg.level_tag == 'error' %}
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <div class="w-100 alert alert-danger alert-dismissible fade show" role="alert">
                     <i class="bi bi-exclamation-octagon-fill"></i>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     {{msg.message}}
                 </div>
                 {% else %}
-                <div class="alert alert-{{msg.level_tag}} alert-dismissible fade show" role="alert">
+                <div class="w-100 alert alert-{{msg.level_tag}} alert-dismissible fade show" role="alert">
                     <i class="bi bi-{% if msg.level_tag == info %}info-circle-fill{% elif msg.level_tag == warning %}exclamation-triangle-fill{% else %}check-circle-fill{% endif %}"></i>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     {{msg.message}}
                 </div>
                 {% endif %}
             {% endfor %}
+
+            <!-- User's location -->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                </symbol>
+            </svg>
+
+              <!-- <div class="w-100 alert alert-info alert-dismissible fade show" role="alert">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+                You are somewhere around <span class="location">[location]</span> <button class="btn btn-info float-end get-location">Get Location</button>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div> -->
+            
             <h4>Navigation Map</h4>
-            <div class="map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.9054858590353!2d11.549292614841518!3d3.8304506496544266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x108bc5347ce2ba5d%3A0x76de28d6bce0db35!2sAwae%20Escalier!5e0!3m2!1sen!2scm!4v1650812642618!5m2!1sen!2scm" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div id="map">
+                <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.9054858590353!2d11.549292614841518!3d3.8304506496544266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x108bc5347ce2ba5d%3A0x76de28d6bce0db35!2sAwae%20Escalier!5e0!3m2!1sen!2scm!4v1650812642618!5m2!1sen!2scm" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
             </div>
         </div>
     </div>
